@@ -1,1 +1,7 @@
-<p>content works!</p>
+<div class="container">
+    <div class="row">
+      <div class="col-md-3" *ngFor="let movie of movies">
+        <app-card [imageUrl]="movie.imageUrl" [title]="movie.title" [description]="movie.description"></app-card>
+      </div>
+    </div>
+  </div>  
