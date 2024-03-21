@@ -2,7 +2,7 @@
     <img class="card-img-top" [src]="imageUrl" alt="Poster do filme">
     <div class="card-body">
       <h5 class="card-title">{{ title }}</h5>
-      <p class="card-text">{{ description }}</p>
+      <p class="card-text">{{ year }}</p>
       <button class="btn btn-primary" mat-raised-button (click)="openDialog()">Detalhes</button>
     </div>
 </div>
@@ -12,7 +12,7 @@
     <h1> {{ title }}</h1>
     <div class="modal-body">
       <img class="card-img-top" [src]="imageUrl" alt="Poster do filme">
-     <p>{{ description }}</p>
+     <div>{{ year }}</div>
     </div>
     <button class="btn btn-primary" mat-raised-button (click)="closeDialog()">Fechar</button>
   </ng-template>
