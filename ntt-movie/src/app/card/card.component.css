@@ -8,11 +8,11 @@
 }
 
 modal-backdrop-full{
-  display: flex;
   position: absolute;
   margin: 0;
   padding: 0;
   top: 0;
-  width: 50%;
-  height: 50%;
+  left: 100px;
+  width: 500px;
+  height: 500px;
 }
