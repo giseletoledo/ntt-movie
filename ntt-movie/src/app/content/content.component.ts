@@ -2,7 +2,6 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { Movie } from '../core/movie';
 import { MovieService } from '../movie.service';
 
-
 @Component({
   selector: 'app-content',
   templateUrl: './content.component.html',
@@ -11,6 +10,7 @@ import { MovieService } from '../movie.service';
 export class ContentComponent {
   movies: Movie[] | undefined;
   movieTitle: string = ''; 
+  movieDescription: string = ''; 
   defaultPosterUrl: string = 'assets/default-poster.png'; 
   
 
@@ -20,8 +20,6 @@ export class ContentComponent {
     this.fetchMovie();
   }
 
- 
-
   fetchMovie(): void {
     if (this.movieTitle) {
       this.movieService.getMovieByTitle(this.movieTitle).subscribe(
@@ -30,6 +28,7 @@ export class ContentComponent {
             ...movie,
             Poster: movie.Poster !== 'N/A' ? movie.Poster : this.defaultPosterUrl
           }));
+          console.log(this.movies)
         },
         error => {
           console.error('Erro ao buscar filmes:', error);

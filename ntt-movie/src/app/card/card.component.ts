@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
 export class CardComponent {
   @Input() imageUrl: string = ''; 
   @Input() title: string = ''; 
-  @Input() description: string = ''; 
+  @Input() year: string = ''; 
   @Input() movie: Movie | undefined;
   selectedMovie: Movie | undefined;
 
