@@ -4,6 +4,7 @@
       <h5 class="card-title">{{ title }}</h5>
       <p class="card-text">{{ year }}</p>
       <button class="btn btn-primary" mat-raised-button (click)="openDialog()">Detalhes</button>
+      <app-favorite [imdbID]="movie.imdbID" [isFavorite]="isFavorite"></app-favorite>
     </div>
 </div>
 

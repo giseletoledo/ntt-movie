@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MatDialogModule } from '@angular/material/dialog';
+import { FavoriteComponent } from './favorite/favorite.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     ContentComponent,
     CardComponent,
     FooterComponent,
-    MovieDetailComponent
+    MovieDetailComponent,
+    FavoriteComponent
   ],
   imports: [
     BrowserModule,
