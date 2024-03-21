@@ -1,0 +1,17 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css");
+
+
+.favorite-icon.isFavorite .bi {
+    font-family: 'bootstrap-icons';
+    font-weight: bold;
+    color: red;
+    font-size: 24px;
+    content: '&#xe005';
+  }
+
+  .favorite-icon:not(.isFavorite) .bi {
+    font-family: 'bootstrap-icons';
+    color: red;
+    font-size: 24px;
+    content: '&#xe003';
+  }
