@@ -8,7 +8,7 @@ import { Component, Input } from '@angular/core';
 export class FavoriteComponent {
   @Input() isFavorite: boolean = false;
   @Input() imdbID: string = '';
-
+  
   toggleFavorite(): void {
     this.isFavorite = !this.isFavorite;
     this.saveFavoriteState();
