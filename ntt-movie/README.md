@@ -1,11 +1,5 @@
 # NttMovie
 
-Busca de filmes na API OMDB
-
-<p align="center">
-<img width="33%" src="" alt="Tela da página listando filmes">
-</p>
-
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.0.
 
 ## Development server
