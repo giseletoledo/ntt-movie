@@ -13,6 +13,7 @@ export class CardComponent {
   @Input() title: string = ''; 
   @Input() year: string = ''; 
   @Input() isFavorite: boolean = false;
+  @Input() imdbID: string = '';
   @Input() movie: Movie | undefined;
   selectedMovie: Movie | undefined;
 
