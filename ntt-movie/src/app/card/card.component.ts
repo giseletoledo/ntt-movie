@@ -12,6 +12,7 @@ export class CardComponent {
   @Input() imageUrl: string = ''; 
   @Input() title: string = ''; 
   @Input() year: string = ''; 
+  @Input() isFavorite: boolean = false;
   @Input() movie: Movie | undefined;
   selectedMovie: Movie | undefined;
 
