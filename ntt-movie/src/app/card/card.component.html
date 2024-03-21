@@ -1,8 +1,24 @@
-<div class="card">
+<div class="card mb-2 mt-2">
     <img class="card-img-top" [src]="imageUrl" alt="Poster do filme">
     <div class="card-body">
       <h5 class="card-title">{{ title }}</h5>
       <p class="card-text">{{ description }}</p>
+      <button mat-raised-button (click)="openDialog()">Detalhes</button>
     </div>
-  </div>
+</div>
+
+   <!-- Modal -->
+   <ng-template #dialogContent>
+    <h1> {{ title }}</h1>
+    <div class="modal-body">
+      <img class="card-img-top" [src]="imageUrl" alt="Poster do filme">
+     <p>{{ description }}</p>
+    </div>
+    <button mat-raised-button (click)="closeDialog()">Fechar</button>
+  </ng-template>
+  
+
+
+
+  
   
