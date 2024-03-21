@@ -3,7 +3,7 @@ import { Movie } from './core/movie';
 import { Observable, catchError, map, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
-interface ServerData {
+interface MovieApiResponse {
   Search: Movie [];
   Error?: string; 
 }
@@ -19,23 +19,18 @@ export class MovieService {
   constructor(private http: HttpClient) { }
 
   getMovieByTitle(query: string): Observable<Movie[]> {
-    const url = `${this.apiUrl}?apikey=${this.apiKey}&s=${query}`;
-
-    return this.http.get<ServerData>(url).pipe(
+    const url = `${this.apiUrl}?s=${query}&apikey=${this.apiKey}`;
+  
+    return this.http.get<MovieApiResponse>(url).pipe(
       map(response => {
-        if (response.Error) {
-          console.error('Error from API:', response.Error);
-          throw new Error('Erro na solicitação da API'); 
-        }
-        return response.Search || [];
+        return response.Search; 
       }),
-      catchError((error) => {
-        console.error('Ocorreu um erro:', error);
+      catchError(error => {
+        console.error('An error occurred:', error);
         throw new Error('Erro na solicitação da API');
       })
     );
   }
-
   getMovieDetails(imdbID: string): Observable<Movie> {
     const url = `${this.apiUrl}?apikey=${this.apiKey}&i=${imdbID}`;
     return this.http.get<Movie>(url).pipe(

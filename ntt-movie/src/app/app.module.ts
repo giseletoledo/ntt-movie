@@ -13,6 +13,8 @@ import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MatDialogModule } from '@angular/material/dialog';
 import { FavoriteComponent } from './favorite/favorite.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { ContentgroupComponent } from './contentgroup/contentgroup.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { FavoriteComponent } from './favorite/favorite.component';
     CardComponent,
     FooterComponent,
     MovieDetailComponent,
-    FavoriteComponent
+    FavoriteComponent,
+    ContentgroupComponent
   ],
   imports: [
     BrowserModule,
@@ -32,6 +35,7 @@ import { FavoriteComponent } from './favorite/favorite.component';
     MatDialogModule
   ],
   providers: [
+    {provide: LocationStrategy, useClass: HashLocationStrategy},
     provideAnimationsAsync()
   ],
   bootstrap: [AppComponent]
