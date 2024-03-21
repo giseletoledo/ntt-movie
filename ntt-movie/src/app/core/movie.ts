@@ -6,7 +6,7 @@ export interface Movie {
     Poster: string,
     imdbVotes: string,
     Genre: string,
-    Plot: string,
+    Plot: string | undefined,
     ZtoT: string,
     imdbRating: string,
     Actors: string,

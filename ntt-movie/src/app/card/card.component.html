@@ -1,22 +1,12 @@
 <div class="card mb-2 mt-2">
-    <img class="card-img-top" [src]="imageUrl" alt="Poster do filme">
-    <div class="card-body">
-      <h5 class="card-title">{{ title }}</h5>
-      <p class="card-text">{{ year }}</p>
-      <button class="btn btn-primary" mat-raised-button (click)="openDialog()">Detalhes</button>
-      <app-favorite [imdbID]="movie?.imdbID ?? 'No imdbID'" [isFavorite]="isFavorite"></app-favorite>
-    </div>
+  <img class="card-img-top" [src]="imageUrl" alt="Poster do filme">
+  <div class="card-body">
+    <h2 class="card-title">{{ title }}</h2>
+    <p class="card-text">{{ year }}</p>
+    <button class="btn btn-primary" [routerLink]="['/movies', movie?.imdbID]">Detalhes</button>
+    <app-favorite [imdbID]="movie?.imdbID ?? 'No imdbID'" [isFavorite]="isFavorite"></app-favorite>
+  </div>
 </div>
-
-   <!-- Modal -->
-   <ng-template #dialogContent>
-    <h1> {{ title }}</h1>
-    <div class="modal-body">
-      <img class="card-img-top" [src]="imageUrl" alt="Poster do filme">
-     <div>{{ year }}</div>
-    </div>
-    <button class="btn btn-primary" mat-raised-button (click)="closeDialog()">Fechar</button>
-  </ng-template>
   
 
 

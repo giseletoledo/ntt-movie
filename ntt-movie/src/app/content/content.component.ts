@@ -19,16 +19,16 @@ export class ContentComponent {
   ngOnInit(): void {
     this.fetchMovie();
   }
-
   fetchMovie(): void {
     if (this.movieTitle) {
       this.movieService.getMovieByTitle(this.movieTitle).subscribe(
         movies => {
-          this.movies = movies.map(movie => ({
+          // Added conditional check
+          this.movies = movies ? movies.map(movie => ({
             ...movie,
             Poster: movie.Poster !== 'N/A' ? movie.Poster : this.defaultPosterUrl
-          }));
-          console.log(this.movies)
+          })) : [];
+          console.log(this.movies);
         },
         error => {
           console.error('Erro ao buscar filmes:', error);
