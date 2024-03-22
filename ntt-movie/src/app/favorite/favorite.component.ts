@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { FavoritesService } from '../favorites.service';
 
 @Component({
   selector: 'app-favorite',
@@ -8,17 +9,17 @@ import { Component, Input } from '@angular/core';
 export class FavoriteComponent {
   @Input() isFavorite: boolean = false;
   @Input() imdbID: string = '';
-  
-  toggleFavorite(): void {
-    this.isFavorite = !this.isFavorite;
-    this.saveFavoriteState();
-  }
 
-  saveFavoriteState(): void {
-    const favoriteData = {
-      imdbID: this.imdbID,
-      isFavorite: this.isFavorite,
-    };
-    localStorage.setItem('favoriteMovies', JSON.stringify(favoriteData));
+
+  constructor(private favoritesService: FavoritesService) {}
+
+toggleFavorite(): void {
+  this.isFavorite = !this.isFavorite;
+  if (this.isFavorite) {
+    this.favoritesService.addToFavorites(this.imdbID);
+  } else {
+    this.favoritesService.removeFromFavorites(this.imdbID);
   }
+}
+
 }
