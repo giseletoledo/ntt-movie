@@ -14,7 +14,7 @@ interface MovieApiResponse {
 export class MovieService {
 
   private apiUrl = 'https://www.omdbapi.com/'; 
-  private apiKey = '7f301f97'
+  private apiKey = ''
 
   constructor(private http: HttpClient) { }
 
