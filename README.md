@@ -8,9 +8,9 @@ Busca de filmes na API OMDB
 - Consumo de dados da API OMDB, endpoint de filme e detalhes
 - Filtro de busca dos filmes favoritos
 
-## Tecnologias Utilizadas
+## 🛠 Tecnologias Utilizadas
 
-- Angular (Javascript)
+- Angular versão 17 sem standalone (Javascript)
 - Git
 - GitHub
 
