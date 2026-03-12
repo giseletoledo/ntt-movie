@@ -15,7 +15,7 @@ import { CardComponent } from '../card/card.component';
 })
 export class ContentComponent {
   movies: Movie[] = [];
-  movieTitle: string = '';
+  movieTitle: string = 'Marvel';
   movieDescription: string = '';
   defaultPosterUrl: string = 'assets/default-poster.png';
   isFilterActive: boolean = false;
