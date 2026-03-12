@@ -42,7 +42,7 @@ npm install
 private apiKey = 'SUA_API_KEY';
 
 # Rode o projeto
-ng serve
+npm start
 ```
 
 Acesse em: `http://localhost:4200`
