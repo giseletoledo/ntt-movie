@@ -10,6 +10,6 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideHttpClient(),
     provideAnimationsAsync(),
-    { provide: LocationStrategy, useClass: HashLocationStrategy }
+    //{ provide: LocationStrategy, useClass: HashLocationStrategy }
   ]
 };

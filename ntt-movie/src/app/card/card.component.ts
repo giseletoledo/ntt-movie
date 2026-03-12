@@ -1,7 +1,7 @@
 import { Component, ElementRef, EventEmitter, Input, Output, TemplateRef, ViewChild } from '@angular/core';
 import { Movie } from '../core/movie';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router'; // Verifique se Router está importado
 import { FavoriteComponent } from '../favorite/favorite.component';
 
 @Component({
@@ -20,7 +20,17 @@ export class CardComponent {
   @Input() movie: Movie | undefined;
   selectedMovie: Movie | undefined;
 
+  // ADICIONE O CONSTRUTOR COM O ROUTER
+  constructor(private router: Router) {}
+
   onMovieSelected(movie: Movie) {
     this.selectedMovie = movie; 
-  } 
+  }
+
+  goToDetails() {
+    console.log('Navegando para filme:', this.imdbID);
+    if (this.imdbID) {
+      this.router.navigate(['/movie', this.imdbID]); // Mudou de 'movies' para 'movie'
+    }
+  }
 }

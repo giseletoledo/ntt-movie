@@ -3,7 +3,7 @@
   <div class="card-body">
     <h2 class="card-title">{{ title }}</h2>
     <p class="card-text">{{ year }}</p>
-    <button class="btn btn-primary" [routerLink]="['/movies', movie?.imdbID]">Detalhes</button>
+    <button class="btn btn-primary" [routerLink]="['/movie', movie?.imdbID]">Detalhes</button>
     <app-favorite [imdbID]="movie?.imdbID ?? 'No imdbID'" [isFavorite]="isFavorite"></app-favorite>
   </div>
 </div>

@@ -1,4 +1,4 @@
-  <div *ngIf="movie">
+<div *ngIf="movie; else loading">
     <div class="card mb-3 mt-4">
         <div class="card-header">
           <h1 class="movie-title">{{movie.Title | uppercase}}</h1>
@@ -17,6 +17,14 @@
         </div>
         <button type="button" class="btn btn-danger" (click)="goBack()">Voltar</button>
       </div>
-
     </div>
   </div>
+  
+  <ng-template #loading>
+    <div class="container mt-5 text-center">
+      <div class="spinner-border text-danger" role="status">
+        <span class="visually-hidden">Carregando...</span>
+      </div>
+      <p class="mt-2">Carregando detalhes do filme...</p>
+    </div>
+  </ng-template>
