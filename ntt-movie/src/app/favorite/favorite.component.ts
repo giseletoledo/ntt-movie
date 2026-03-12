@@ -16,6 +16,10 @@ export class FavoriteComponent {
 
   constructor(private favoritesService: FavoritesService) {}
 
+  ngOnInit(): void {
+    this.isFavorite = this.favoritesService.isFavorite(this.imdbID);
+  }
+
 toggleFavorite(): void {
   this.isFavorite = !this.isFavorite;
   if (this.isFavorite) {

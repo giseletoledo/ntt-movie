@@ -19,12 +19,17 @@ export class CardComponent {
   @Input() imdbID: string = '';
   @Input() movie: Movie | undefined;
   selectedMovie: Movie | undefined;
+  readonly defaultPosterUrl = './assets/default-poster.png';
 
   // ADICIONE O CONSTRUTOR COM O ROUTER
   constructor(private router: Router) {}
 
   onMovieSelected(movie: Movie) {
     this.selectedMovie = movie; 
+  }
+
+  onImageError(event: Event): void {
+  (event.target as HTMLImageElement).src = this.defaultPosterUrl;
   }
 
   goToDetails() {

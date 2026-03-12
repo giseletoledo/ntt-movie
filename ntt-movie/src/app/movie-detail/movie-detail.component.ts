@@ -10,32 +10,30 @@ import { CommonModule, Location, UpperCasePipe } from '@angular/common';
   templateUrl: './movie-detail.component.html',
   styleUrl: './movie-detail.component.css',
   imports: [CommonModule, UpperCasePipe],
-  changeDetection: ChangeDetectionStrategy.OnPush // Atualiza o carregamento dos detalhes
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MovieDetailComponent implements OnInit {
   movie: Movie | undefined;
+  readonly defaultPosterUrl = './assets/default-poster.png';
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private movieService: MovieService,
     private location: Location,
-    private cdr: ChangeDetectorRef // Injete o ChangeDetectorRef
-  ) {
-    console.log('MovieDetailComponent constructor');
-  }
+    private cdr: ChangeDetectorRef
+  ) {}
 
   ngOnInit(): void {
-    console.log('MovieDetailComponent ngOnInit');
-    
     const imdbID = this.activatedRoute.snapshot.paramMap.get('imdbID');
-    console.log('imdbID:', imdbID);
-    
+
     if (imdbID) {
       this.movieService.getMovieDetails(imdbID).subscribe({
         next: (movie: Movie) => {
-          console.log('movie recebido:', movie);
-          this.movie = movie;
-          this.cdr.markForCheck(); // Força uma verificação de mudanças
+          this.movie = {
+            ...movie,
+            Poster: movie.Poster !== 'N/A' ? movie.Poster : this.defaultPosterUrl
+          };
+          this.cdr.markForCheck();
         },
         error: (err: any) => {
           console.error('erro:', err);
@@ -44,7 +42,9 @@ export class MovieDetailComponent implements OnInit {
       });
     }
   }
-
+onImageError(event: Event): void {
+  (event.target as HTMLImageElement).src = this.defaultPosterUrl;
+}
   goBack(): void {
     this.location.back();
   }

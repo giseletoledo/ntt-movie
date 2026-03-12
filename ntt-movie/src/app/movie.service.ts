@@ -4,8 +4,8 @@ import { Observable, catchError, map, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 interface MovieApiResponse {
-  Search: Movie [];
-  Error?: string; 
+  Search: Movie[];
+  Error?: string;
 }
 
 @Injectable({
@@ -13,32 +13,35 @@ interface MovieApiResponse {
 })
 export class MovieService {
 
-  private apiUrl = 'https://www.omdbapi.com/'; 
-  private apiKey = ''
+  private apiUrl = 'https://www.omdbapi.com/';
+  private apiKey = '';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getMovieByTitle(query: string): Observable<Movie[]> {
     const url = `${this.apiUrl}?s=${query}&apikey=${this.apiKey}`;
-  
+
     return this.http.get<MovieApiResponse>(url).pipe(
       map(response => {
-        return response.Search; 
+        if (response.Error || !response.Search) {
+          throw new Error(response.Error || 'Nenhum resultado encontrado');
+        }
+        return response.Search;
       }),
       catchError(error => {
         console.error('An error occurred:', error);
-        throw new Error('Erro na solicitação da API');
+        return of([]);
       })
     );
   }
+
   getMovieDetails(imdbID: string): Observable<Movie> {
     const url = `${this.apiUrl}?apikey=${this.apiKey}&i=${imdbID}`;
     return this.http.get<Movie>(url).pipe(
       catchError((error) => {
         console.error('Ocorreu um erro:', error);
-        throw 'Erro na solicitação da API'; 
+        throw 'Erro na solicitação da API';
       })
     );
   }
 }
-

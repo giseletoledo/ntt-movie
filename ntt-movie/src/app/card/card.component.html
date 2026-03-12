@@ -1,5 +1,6 @@
 <div class="card mb-2 mt-2">
-  <img class="card-img-top" [src]="imageUrl" alt="Poster do filme">
+  <img class="card-img-top" [src]="imageUrl" alt="Poster do filme"
+  (error)="onImageError($event)" />
   <div class="card-body">
     <h2 class="card-title">{{ title }}</h2>
     <p class="card-text">{{ year }}</p>
